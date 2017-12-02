@@ -1,0 +1,29 @@
+1.Scenario - Join page happy path
+Given a user is on the mendeley home page and clicks Create Account
+When the user completes Email address, First name, Last name and Password fields with valid information and clicks on the Continue button
+Then the user is redirected to the next page of the join flow
+
+Given a user is on the second page of the join flow (/join/#last-step)
+When the user selects an option for Field of Study and also selects an option for Academic status and clicks Create Account
+Then the user is redirected on his personal feed page (/newsfeed)
+
+2.Scenario - Join page existing email
+Given a user is on the Mendeley home page and clicks Create Account
+When the user comepletes Email address field with an already existing account
+Then the user should receive the correct error message and a redirection link to the sign in page
+
+3.Scenario - Join page password length
+Given a user is on the Mendeley home page and clicks Create Account
+When the user completes the password field with a short password
+Then the user should receive the correct error message saying "password must be at least 7 characters"
+
+4.Scenario - Join page invalid email
+Given a user is on the Mendeley home page and clicks Create Account
+When the user completes Email address field with an invalid email address
+Then the user should receive the correct error message saying "Not a valid email. Take a closer look"
+
+5.Scenario - Join Page SQL/javascript injection
+Given a user is on the Mendeley home page and clicks Create Account
+When the user completes any of the fields with SQL/Javascript injection
+Then the user should receive correct error messages saying they typed invalid information
+And should not be redirected when pressing the Continue button
